@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+{% for blog in blog_posts %}
+<div class="sidebar">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div class="blog-container">
+	<div class="blog-card">
+		<div class="content-wrap">
+			{% if blog.image %}
+				<img class="blog-img" src="{{blog.image.url}}" style="border-top-right-radius: .3rem; border-top-left-radius: .3rem;">
+			{% endif %}
+			<h2 class="blog-title">{{blog.title}}<br></h2>
+			{{blog.slug}}
+			<p>{{blog.content|truncatewords:50}}</p><br>
+			<p>Published: {{blog.timestamp}}</p>
+            <button class="head-btn"><a href="#">Read More</a></button>
+		</div>
+	</div>
+</div>
+{% endfor %}
+
+<a style="text-decoration: none;" href="{% url 'comments:comment-create' %}"><h3>Comments...</h3></a>
+<a href="{% url 'blog:blog-create' %}">Create Post</a>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}
+
+
+

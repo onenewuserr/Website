@@ -1,0 +1,5 @@
+<form method="POST">
+	{% csrf_token %}
+	<input type="textarea" name="comment" placeholder="Type here..." style="height: 3rem;"><br>
+	<input type="submit" name="comment-btn" value="Send">
+</form>

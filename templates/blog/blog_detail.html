@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block content %}
+{{object.title}}<br>
+{{object.slug}}<br>
+{{object.content}}<br>
+{{object.timestamp}}<br>
+
+{% include 'blog/comments/comments.html' %}
+{% endblock %}

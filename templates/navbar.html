@@ -1,0 +1,40 @@
+
+<nav>
+	<div class="logo">
+		<h4><a href="/">MySite</a></h4>
+	</div>
+	<ul class="nav-links">
+		<li> 
+			<a href="/">Home</a>
+		</li>
+		<li> 
+			<a href="/admin/">Admin</a>
+		</li>
+		<li>
+			<a href="{% url 'product:product-home' %}">Shop</a>
+		</li>
+		<li>
+			<a href="{% url 'blog:blog-list' %}">Blog</a>
+		</li>
+		<li>
+			<a href="/about/">About</a>
+		</li>
+		<li>
+			<a href="{% url 'accounts:contact' %}">Contact</a>
+		</li>
+		{% if request.user.is_authenticated %}
+		<li>
+			<a href="{% url 'accounts:user-logout' %}">Logout</a>
+		</li>
+		{% else %}
+		<li>
+			<a href="{% url 'accounts:user-login' %}">Login</a>
+		</li>
+		{% endif %}
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>

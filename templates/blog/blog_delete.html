@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block content %}
+<p>Are you sure you want to delete? <h3><strong>{{object.title}}?</strong></h3></p>
+<form method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" name="update-btn" value="Delete">
+	<input type="submit" name="cancel-btn" value="Cancel" action="{% url 'blog:blog-list' %}">
+</form>
+{% endblock %}
